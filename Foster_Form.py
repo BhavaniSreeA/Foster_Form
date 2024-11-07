@@ -6,19 +6,21 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 s = symbols('s')
+if st.button("Getting Error :(Read INSTRUCTIONS)"):
+    st.write("1. Type both Numerator and Denominator in the respective boxes and press ENTER to get the output. \n 2. Incase you see any error before typing the numerator ignore it. \n 3. s^2 Not allowed instead write s**2. \n 4. Cannot write 4s instead use 4*s. \n 5. Numerator cannot have / symbol in it. Specify numerator and denominator seperately. \n 6. Example (s+1)*(s+4) - USE BRACKETS")
 st.title("Circuit Diagram Generator")
 st.write("**Create Circuit Diagrams with Z(s) or Y(s)**")
 
+A = 1
+B = 1
 foster_type = st.selectbox("Select Foster form", ['1', '2'], help="Choose between Foster I or Foster II form.")
 A_expr = st.text_input("Enter the numerator A(s):")
 B_expr = st.text_input("Enter the denominator B(s):")
 if A_expr and B_expr:  # Check if input is provided
-    A = parse_expr(A_expr, {'s': s})
-    B = parse_expr(B_expr, {'s': s})
+        A = parse_expr(A_expr, {'s': s})
+        B = parse_expr(B_expr, {'s': s})
 else:
     st.warning("Please enter both the numerator A(s) and denominator B(s).")
-# A = parse_expr(A_expr, {'s': s})
-# B = parse_expr(B_expr, {'s': s})
 
 if foster_type == '1':
     st.write("You selected Foster I form.")
