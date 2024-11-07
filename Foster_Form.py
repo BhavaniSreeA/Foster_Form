@@ -8,69 +8,13 @@ import streamlit as st
 s = symbols('s')
 st.title("Circuit Diagram Generator")
 st.write("**Create Circuit Diagrams with Z(s) or Y(s)**")
-# Custom CSS for styling
-st.markdown("""
-    <style>
-    /* Main background color */
-    body {
-        background-color: #f5f7fa;
-        color: #333;
-        font-family: 'Arial', sans-serif;
-    }
-
-    /* Header styling */
-    h1, h2, h3 {
-        color: #4a4a4a;
-        text-align: center;
-    }
-
-    /* Center the circuit image */
-    .circuit-diagram {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    /* Style select boxes and text input */
-    .stSelectbox, .stTextInput, .stButton {
-        text-align: center;
-        background-color: #e8e8e8;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        padding: 8px;
-        margin: 10px;
-        font-size: 16px;
-    }
-
-    /* Style the warning, error, and info messages */
-    .stAlert {
-        background-color: #f1f1f1;
-        color: #3a3a3a;
-        border: 1px solid #b5b5b5;
-        border-radius: 8px;
-    }
-
-    /* Pole-zero plot styling */
-    .plot-container {
-        margin: 20px auto;
-        width: 80%;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 20px;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 foster_type = st.selectbox("Select Foster form", ['1', '2'], help="Choose between Foster I or Foster II form.")
 A_expr = st.text_input("Enter the numerator A(s):")
 B_expr = st.text_input("Enter the denominator B(s):")
 if A_expr and B_expr:  # Check if input is provided
-    try:
-        A = parse_expr(A_expr, {'s': s})
-        B = parse_expr(B_expr, {'s': s})
-    except SympifyError:
-        st.error("Invalid mathematical expression. Please enter a valid polynomial in terms of s.")
+    A = parse_expr(A_expr, {'s': s})
+    B = parse_expr(B_expr, {'s': s})
 else:
     st.warning("Please enter both the numerator A(s) and denominator B(s).")
 # A = parse_expr(A_expr, {'s': s})
