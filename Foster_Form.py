@@ -4,7 +4,6 @@ import schemdraw.elements as elm
 import sympy as sp 
 import matplotlib.pyplot as plt
 import streamlit as st
-from PIL import Image
 
 s = symbols('s')
 st.title("Circuit Diagram Generator")
@@ -321,18 +320,18 @@ def circuit_mapping_from_partial_fractions(W,k):
                     d += elm.Line().left(2)
                     d.move(2,6)
         d.save('circuit_diagram.png')
+        st.image('circuit_diagram.png')
     return components
 
 if st.button("Generate Circuit"):
     if y==1 :
-        st.markdown("<div class='circuit-diagram'>", unsafe_allow_html=True)
-        circuit_image = Image.open('circuit_diagram.png')
-        st.image(circuit_image, caption='Generated Circuit Diagram', use_container_width=True)
-        st.markdown("</div>", unsafe_allow_html=True)
         if form == 1:
+            st.markdown("<div class='circuit-diagram'>", unsafe_allow_html=True)
             components = circuit_mapping_from_partial_fractions(Z,k)
         if form == 2: 
+            st.markdown("<div class='circuit-diagram'>", unsafe_allow_html=True)
             components = circuit_mapping_from_partial_fractions(Y,k)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 if st.button("Show Pole-Zero Plot"):
     # Plotting Zeroes and poles 
