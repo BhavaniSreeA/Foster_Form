@@ -22,7 +22,6 @@ jovian==0.2.47
 jsonpointer==2.1
 keras==3.3.3
 libclang==18.1.1
-mkl-service==2.4.0
 ml-dtypes==0.3.2
 munkres==1.1.4
 namex==0.0.8
