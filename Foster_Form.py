@@ -14,8 +14,8 @@ st.write("**Create Circuit Diagrams with Z(s) or Y(s)**")
 A = 1
 B = 1
 foster_type = st.selectbox("Select Foster form", ['1', '2'], help="Choose between Foster I or Foster II form.")
-A_expr = st.text_input("Enter the numerator A(s):")
-B_expr = st.text_input("Enter the denominator B(s):")
+A_expr = st.text_input("Enter the numerator A(s):" , help="Example = 4*(s+1)*(s+3)")
+B_expr = st.text_input("Enter the denominator B(s):", help="Example = (s+2)*(s+4)")
 if A_expr and B_expr:  # Check if input is provided
         A = parse_expr(A_expr, {'s': s})
         B = parse_expr(B_expr, {'s': s})
